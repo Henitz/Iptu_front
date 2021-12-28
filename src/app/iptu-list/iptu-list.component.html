@@ -1,4 +1,8 @@
+
 <form class="details-form" (ngSubmit)="pesquisa()" action="">
+  <a style="cursor: pointer" (click)="exportexcel()">
+    <mat-icon> cloud_download</mat-icon>
+  </a>
   <mat-form-field class="details-form__form-field">
     <mat-label class="details-form__form-field__label">Logradouro</mat-label>
     <input name="logradouroInformado" [(ngModel)]="logradouroInformado" class="details-form__form-field__input" matInput placeholder="informe um logradouro" value="">
@@ -9,10 +13,11 @@
   </mat-form-field>
   <button mat-flat-button color="primary">Pesquisar</button>
 </form>
+
 <div class="row">
   <div class="col-md-12">
     <div class="table-responsive">
-      <table class="table table-hover">
+      <table id="excel-table" class="table table-hover">
         <thead>
           <th>Contribuinte</th>
           <th>Logradouro</th>

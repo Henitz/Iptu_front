@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { IptuListComponent } from './iptu-list/iptu-list.component';
-
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { IptuListComponent } from './iptu-list/iptu-list.component';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
