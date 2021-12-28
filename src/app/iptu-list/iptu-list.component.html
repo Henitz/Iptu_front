@@ -1,0 +1,42 @@
+<form class="details-form" (ngSubmit)="pesquisa()" action="">
+  <mat-form-field class="details-form__form-field">
+    <mat-label class="details-form__form-field__label">Logradouro</mat-label>
+    <input name="logradouroInformado" [(ngModel)]="logradouroInformado" class="details-form__form-field__input" matInput placeholder="informe um logradouro" value="">
+  </mat-form-field>
+  <mat-form-field class="details-form__form-field">
+    <mat-label class="details-form__form-field__label">Numero</mat-label>
+    <input name="logradouroInformado" [(ngModel)]="numeroInformado" class="details-form__form-field__input" matInput placeholder="informe um numero" value="">
+  </mat-form-field>
+  <button mat-flat-button color="primary">Pesquisar</button>
+</form>
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <th>Contribuinte</th>
+          <th>Logradouro</th>
+          <th>Número</th>
+
+        </thead>
+        <tbody>
+            <tr  *ngFor="let iptu of iptus">
+              <td>{{iptu.contribuinte}}</td>
+              <td>{{iptu.logradouro}}</td>
+              <td>{{iptu.numerodoimovel}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

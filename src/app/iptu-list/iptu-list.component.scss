@@ -1,0 +1,21 @@
+table{
+  margin:30px;
+}
+.details-form{
+  margin:30px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 20rem;
+  &__form-field{
+    flex-basis: 100%;
+    flex-grow: 1;
+
+    &__label{
+      font-size: 1rem;
+    }
+    &__input{
+      font-size: 1rem;
+    }
+  }
+}
