@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { IptuListComponent } from './iptu-list/iptu-list.component';
 import {MatIconModule} from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     HttpClientModule,
     MatIconModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

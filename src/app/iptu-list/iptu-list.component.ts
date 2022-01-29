@@ -6,6 +6,7 @@ import * as XLSX from 'xlsx';
 import { ViewChild, ElementRef } from '@angular/core';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-iptu-list',
@@ -13,7 +14,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./iptu-list.component.scss']
 })
 export class IptuListComponent implements OnInit {
-
+totalElements : number = 0;
   iptus: Iptu[] = [];
   logradouroInformado!: string;
   numeroInformado!: string;
@@ -25,8 +26,30 @@ export class IptuListComponent implements OnInit {
   constructor(private service: IptuService) {}
 
   ngOnInit(): void {
-
+    this.todosPaginado({ page: "0", size: "5" });
   }
+
+    private todosPaginado(request: any) {
+        this.service.getAllPaginated(request)
+        .subscribe(data => {
+            this.iptus = data['content'];
+            this.totalElements = data['totalElements'];
+        }
+        , error => {
+            console.log(error.error.message);
+        }
+        );
+    }
+
+    nextPage(event: PageEvent) {
+        const request = <any>{};
+        request['page'] = event.pageIndex.toString();
+        request['size'] = event.pageSize.toString();
+        this.todosPaginado(request);
+    }
+
+
+
 
   pesquisa(){
     this.service.getAll(this.logradouroInformado, this.numeroInformado).subscribe((i)=>this.iptus=i)

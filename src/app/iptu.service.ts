@@ -17,4 +17,14 @@ export class IptuService {
     return this.http.get<Iptu[]>(this.baseIptuUrl + `/iptus/${logradouro}` + `/${numero}`);
   }
 
-}
+  getAllPaginated(request : any): Observable<any>{
+const params = request;
+
+return this.http.get(this.baseIptuUrl + `/iptus`, {params})
+
+
+  }
+
+  }
+
+
