@@ -3,6 +3,11 @@
   <a style="cursor: pointer" (click)="exportexcel()">
     <mat-icon> cloud_download</mat-icon>
   </a>
+
+  <div class="col-md-4 text-right">
+    <button (click)="Screen()">make pdf</button>
+  </div>
+
   <mat-form-field class="details-form__form-field">
     <mat-label class="details-form__form-field__label">Logradouro</mat-label>
     <input name="logradouroInformado" [(ngModel)]="logradouroInformado" class="details-form__form-field__input" matInput placeholder="informe um logradouro" value="">
@@ -17,7 +22,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="table-responsive">
-      <table id="excel-table" class="table table-hover">
+      <table id="excel" #excel class="table table-hover">
         <thead>
           <th>Contribuinte</th>
           <th>Logradouro</th>

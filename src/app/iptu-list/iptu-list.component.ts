@@ -3,6 +3,9 @@ import { Iptu } from '../iptu';
 import { Router } from '@angular/router';
 import { IptuService } from '../iptu.service';
 import * as XLSX from 'xlsx';
+import { ViewChild, ElementRef } from '@angular/core';
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-iptu-list',
@@ -16,6 +19,8 @@ export class IptuListComponent implements OnInit {
   numeroInformado!: string;
   /*name of the excel-file which will be downloaded. */
   fileName= 'ExcelSheet.xlsx';
+
+  @ViewChild('htmlData') htmlData!:ElementRef;
 
   constructor(private service: IptuService) {}
 
@@ -32,7 +37,7 @@ export class IptuListComponent implements OnInit {
   exportexcel(): void
       {
          /* table id is passed over here */
-         let element = document.getElementById('excel-table');
+         let element = document.getElementById('excel');
          const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
 
          /* generate workbook and add the worksheet */
@@ -43,6 +48,27 @@ export class IptuListComponent implements OnInit {
          XLSX.writeFile(wb, this.fileName);
 
       }
+
+
+
+      Screen()
+{
+    var data = document.getElementById('excel');
+    html2canvas(data!).then(canvas => {
+        // Few necessary setting options
+        var imgWidth = 208;
+        var pageHeight = 295;
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+        var heightLeft = imgHeight;
+
+        const contentDataURL = canvas.toDataURL('image/png')
+        let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
+        var position = 0;
+        pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+        pdf.save('MYPdf.pdf'); // Generated PDF
+    });
+}
+
 
 
 }

@@ -99,11 +99,15 @@
               "src/favicon.ico",
               "src/assets"
             ],
+
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "../node_modules/jspdf/dist/jspdf.min.js"
+            ]
           }
         }
       }
